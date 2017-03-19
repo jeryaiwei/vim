@@ -24,7 +24,7 @@ lnif $CURRENT_DIR/vimrc.bundles $HOME/.vimrc.bundles
 lnif "$CURRENT_DIR/" "$HOME/.vim"
 
 
-echo "Step3: update/install plugins using Vundle"
+echo "Step3: update/install plugins using PlugInstall"
 system_shell=$SHELL
 export SHELL="/bin/sh"
 vim -u $HOME/.vimrc.bundles +PlugInstall! +PlugClean! +qall
