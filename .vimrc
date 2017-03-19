@@ -313,8 +313,8 @@
     if !exists('g:vim_no_fastTabs')
         map <S-H> gT
         map <S-L> gt
-        noremap <leader>th :tablast
-        noremap <leader>tl :tablast
+        noremap <leader>th :tabfirst<CR>
+        noremap <leader>tl :tablast<CR>
         noremap <leader>1 1gt
         noremap <leader>2 2gt
         noremap <leader>3 3gt
@@ -324,7 +324,6 @@
         noremap <leader>7 7gt
         noremap <leader>8 8gt
         noremap <leader>9 9gt
-        noremap <leader>0 :tabfirst
     endif
 
     " Stupid shift key fixes
@@ -542,7 +541,7 @@
                 let g:unite_source_menu_menus.f = {
                             \ 'description' : '    fzf.vim          ⌘ [menu]f',
                             \}
-                " supported by fzf layer
+                " supported by fzf
                 let g:unite_source_menu_menus.f.command_candidates = [
                             \['►   Buffers                                          (fzf)',
                             \'Buffers'],
@@ -793,44 +792,42 @@
     " }
 
     " FZF {
-        if isdirectory(expand("~/.vim/bundle/fzf.vim"))
-            " Default fzf layout
-            " - down / up / left / right
-            let g:fzf_layout = { 'down': '~40%' }
+       " Default fzf layout
+       " - down / up / left / right
+       let g:fzf_layout = { 'down': '~40%' }
 
-            let g:fzf_colors = {
-                \ 'fg':      ['fg', 'Normal'],
-                \ 'bg':      ['bg', 'Normal'],
-                \ 'hl':      ['fg', 'Function'],
-                \ 'fg+':     ['fg', 'String', 'CursorColumn', 'Normal'],
-                \ 'bg+':     ['bg', 'Statusline', 'CursorColumn'],
-                \ 'hl+':     ['fg', 'Type'],
-                \ 'info':    ['fg', 'PreProc'],
-                \ 'prompt':  ['fg', 'Conditional'],
-                \ 'pointer': ['fg', 'Error'],
-                \ 'marker':  ['fg', 'String'],
-                \ 'spinner': ['fg', 'Label'],
-                \ 'header':  ['fg', 'Comment'],
-                \   }
-            nmap <Leader>? <plug>(fzf-maps-n)
-            xmap <Leader>? <plug>(fzf-maps-x)
-            omap <Leader>? <plug>(fzf-maps-o)
+       let g:fzf_colors = {
+           \ 'fg':      ['fg', 'Normal'],
+           \ 'bg':      ['bg', 'Normal'],
+           \ 'hl':      ['fg', 'Function'],
+           \ 'fg+':     ['fg', 'String', 'CursorColumn', 'Normal'],
+           \ 'bg+':     ['bg', 'Statusline', 'CursorColumn'],
+           \ 'hl+':     ['fg', 'Type'],
+           \ 'info':    ['fg', 'PreProc'],
+           \ 'prompt':  ['fg', 'Conditional'],
+           \ 'pointer': ['fg', 'Error'],
+           \ 'marker':  ['fg', 'String'],
+           \ 'spinner': ['fg', 'Label'],
+           \ 'header':  ['fg', 'Comment'],
+           \   }
+       nmap <Leader>? <plug>(fzf-maps-n)
+       xmap <Leader>? <plug>(fzf-maps-x)
+       omap <Leader>? <plug>(fzf-maps-o)
 
-            nnoremap <Leader>ag :Ag<CR>
-            nnoremap <Leader>bb :Buffers<CR>
+       nnoremap <Leader>ag :Ag<CR>
+       nnoremap <Leader>bb :Buffers<CR>
 
-            nnoremap <Leader>b? :Buffers<CR>
-            nnoremap <Leader>w? :Windows<CR>
-            nnoremap <Leader>f? :Files<CR>
+       nnoremap <Leader>b? :Buffers<CR>
+       nnoremap <Leader>w? :Windows<CR>
+       nnoremap <Leader>f? :Files<CR>
 
-            nnoremap <Leader>ff :Files ~<CR>
+       nnoremap <Leader>ff :Files ~<CR>
 
-            " fzf-filemru {
-                if isdirectory(expand("~/.vim/bundle/fzf-filemru"))
-                    nnoremap <Leader>pr :ProjectMru --tiebreak=end<cr>
-                endif
-            " }
-        endif
+       " fzf-filemru {
+           if isdirectory(expand("~/.vim/bundle/fzf-filemru"))
+               nnoremap <Leader>pr :ProjectMru --tiebreak=end<cr>
+           endif
+       " }
     " }
 
     " TagBar {
@@ -1242,7 +1239,7 @@
     " }
 
     " Wildfire {
-    	let g:wildfire_objects = {
+        let g:wildfire_objects = {
                 \ "*" : ["i'", 'i"', "i)", "i]", "i}", "ip"],
                 \ "html,xml" : ["at"],
                 \ }
@@ -1259,15 +1256,39 @@
 
         " See `:echo g:airline_theme_map` for some more choices
         " Default in terminal vim is 'dark'
-        if isdirectory(expand("~/.vim/bundle/vim-airline-themes/"))
-            if !exists('g:airline_theme')
-                let g:airline_theme = 'simple'
-            endif
-            if !exists('g:airline_powerline_fonts')
-                " Use the default set of separators with a few customizations
-                let g:airline_left_sep='›'  " Slightly fancier than '>'
-                let g:airline_right_sep='‹' " Slightly fancier than '<'
-            endif
+        let g:airline#extensions#tabline#enabled = 1
+        let g:airline#extensions#tabline#buffer_idx_mode = 1
+        let g:airline#extensions#tabline#buffer_nr_show = 1
+        let g:airline#extensions#tabline#buffer_nr_format = '%s:'
+        "let g:airline#extensions#tabline#fnamemod = ':t'
+        let g:airline#extensions#tabline#fnamecollapse = 1
+        let g:airline#extensions#tabline#fnametruncate = 0
+        let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+        let g:airline#extensions#default#section_truncate_width = {
+                \ 'b': 79,
+                \ 'x': 60,
+                \ 'y': 88,
+                \ 'z': 45,
+                \ 'warning': 80,
+                \ 'error': 80,
+                \ }
+        let g:airline#extensions#default#layout = [
+                    \ [ 'a', 'error', 'warning', 'b', 'c' ],
+                    \ [ 'x', 'y', 'z' ]
+                    \ ]
+
+        " Distinct background color is enough to discriminate the warning and
+        " error information.
+        let g:airline#extensions#ale#error_symbol = '•'
+        let g:airline#extensions#ale#warning_symbol = '•'
+
+        if !exists('g:airline_theme')
+            let g:airline_theme = 'simple'
+        endif
+        if !exists('g:airline_powerline_fonts')
+            " Use the default set of separators with a few customizations
+            let g:airline_left_sep='›'  " Slightly fancier than '>'
+            let g:airline_right_sep='‹' " Slightly fancier than '<'
         endif
     " }
 

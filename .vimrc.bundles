@@ -42,6 +42,13 @@ call plug#begin('~/.vim/bundle')
         Plug 'mhinz/vim-startify'
         Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
         Plug 'tweekmonster/fzf-filemru', { 'on': 'ProjectMru' }
+        Plug 'altercation/vim-colors-solarized'
+        Plug 'vim-airline/vim-airline'
+        Plug 'vim-airline/vim-airline-themes'
+        Plug 'powerline/fonts'
+        Plug 'jistr/vim-nerdtree-tabs'
+        Plug 'flazz/vim-colorschemes'
+        Plug 'scrooloose/nerdtree'
     " }
 
     " In your .vimrc.before.local file
@@ -56,8 +63,6 @@ call plug#begin('~/.vim/bundle')
 
     " General {
         if count(g:vim_bundle_groups, 'general')
-            Plug 'scrooloose/nerdtree'
-            Plug 'altercation/vim-colors-solarized'
             Plug 'spf13/vim-colors'
             Plug 'tpope/vim-surround'
             Plug 'tpope/vim-repeat'
@@ -67,13 +72,8 @@ call plug#begin('~/.vim/bundle')
             Plug 'vim-scripts/sessionman.vim'
             Plug 'liuchengxu/space-vim-dark'
             Plug 'matchit.zip'
-            Plug 'vim-airline/vim-airline'
-            Plug 'vim-airline/vim-airline-themes'
-            Plug 'powerline/fonts'
             Plug 'bling/vim-bufferline'
             Plug 'easymotion/vim-easymotion'
-            Plug 'jistr/vim-nerdtree-tabs'
-            Plug 'flazz/vim-colorschemes'
             Plug 'mbbill/undotree'
             Plug 'nathanaelkane/vim-indent-guides'
             if !exists('g:vim_no_views')
