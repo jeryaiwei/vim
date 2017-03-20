@@ -70,6 +70,7 @@ call plug#begin('~/.vim/bundle')
             Plug 'jiangmiao/auto-pairs'
             Plug 'terryma/vim-multiple-cursors'
             Plug 'vim-scripts/sessionman.vim'
+            Plug 'vim-scripts/nginx.vim'
             Plug 'liuchengxu/space-vim-dark'
             Plug 'matchit.zip'
             Plug 'bling/vim-bufferline'

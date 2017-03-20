@@ -326,6 +326,20 @@
         noremap <leader>9 9gt
     endif
 
+    if !exists('g:vim_no_fastBuffers')
+        noremap <leader>bf :bf<CR>
+        noremap <leader>bl :bl<CR>
+        noremap <leader>b1 :b1<CR>
+        noremap <leader>b2 :b2<CR>
+        noremap <leader>b3 :b3<CR>
+        noremap <leader>b4 :b4<CR>
+        noremap <leader>b5 :b5<CR>
+        noremap <leader>b6 :b6<CR>
+        noremap <leader>b7 :b7<CR>
+        noremap <leader>b8 :b8<CR>
+        noremap <leader>b9 :b9<CR>
+    endif
+
     " Stupid shift key fixes
     if !exists('g:vim_no_keyfixes')
         if has("user_commands")
@@ -799,11 +813,7 @@
 
        nnoremap <Leader>ag :Ag<CR>
        nnoremap <Leader>bb :Buffers<CR>
-
-       nnoremap <Leader>b? :Buffers<CR>
-       nnoremap <Leader>w? :Windows<CR>
-       nnoremap <Leader>f? :Files<CR>
-
+       nnoremap <Leader>ww :Windows<CR>
        nnoremap <Leader>ff :Files ~<CR>
 
        " fzf-filemru {
