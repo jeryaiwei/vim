@@ -54,7 +54,7 @@ call plug#begin('~/.vim/bundle')
     " In your .vimrc.before.local file
     " list only the plugin groups you will use
     if !exists('g:vim_bundle_groups')
-        let g:vim_bundle_groups=['general', 'unite', 'tmux', 'writing', 'youcompleteme', 'programming', 'php', 'ruby', 'python', 'javascript', 'html', 'misc', 'typescript']
+        let g:vim_bundle_groups=['general', 'unite', 'tmux', 'writing', 'youcompleteme', 'programming', 'go', 'php', 'ruby', 'python', 'javascript', 'html', 'misc', 'typescript']
     endif
 
     " To override all the included bundles, add the following to your
