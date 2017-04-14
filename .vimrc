@@ -129,11 +129,12 @@
 " Vim UI {
 
     if !exists('g:override_vim_bundles')
-        let g:solarized_termcolors=256
-        let g:solarized_termtrans=1
-        let g:solarized_contrast="normal"
-        let g:solarized_visibility="normal"
-        colorscheme solarized             " Load a colorscheme
+        "let g:solarized_termcolors=256
+        "let g:solarized_termtrans=1
+        "let g:solarized_contrast="normal"
+        "let g:solarized_visibility="normal"
+        "colorscheme solarized             " Load a colorscheme
+        color molokai
     endif
 
     set tabpagemax=15               " Only show 15 tabs
@@ -204,7 +205,6 @@
     " .vimrc.before.local file:
     "   let g:vim_keep_trailing_whitespace = 1
     autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql autocmd BufWritePre <buffer> if !exists('g:vim_keep_trailing_whitespace') | call StripTrailingWhitespace() | endif
-    "autocmd FileType go autocmd BufWritePre <buffer> Fmt
     autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
     autocmd FileType haskell,puppet,ruby,yml setlocal expandtab shiftwidth=2 softtabstop=2
     " preceding line best in a plugin but here for now.
@@ -442,6 +442,8 @@
 
     " GoLang {
         if count(g:vim_bundle_groups, 'go')
+            let g:rehash256 = 1
+            let g:molokai_original = 1
             let g:go_highlight_functions = 1
             let g:go_highlight_methods = 1
             let g:go_highlight_structs = 1

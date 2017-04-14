@@ -144,16 +144,6 @@ call plug#begin('~/.vim/bundle')
             Plug 'Valloric/YouCompleteMe'
             Plug 'SirVer/ultisnips'
             Plug 'honza/vim-snippets'
-        elseif count(g:vim_bundle_groups, 'neocomplcache')
-            Plug 'Shougo/neocomplcache'
-            Plug 'Shougo/neosnippet'
-            Plug 'Shougo/neosnippet-snippets'
-            Plug 'honza/vim-snippets'
-        elseif count(g:vim_bundle_groups, 'neocomplete')
-            Plug 'Shougo/neocomplete.vim.git'
-            Plug 'Shougo/neosnippet'
-            Plug 'Shougo/neosnippet-snippets'
-            Plug 'honza/vim-snippets'
         endif
     " }
 
@@ -240,6 +230,7 @@ call plug#begin('~/.vim/bundle')
         if count(g:vim_bundle_groups, 'go')
             "Plug 'Blackrush/vim-gocode'
             Plug 'fatih/vim-go'
+            Plug 'fatih/molokai'
         endif
     " }
 
