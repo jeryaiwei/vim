@@ -130,8 +130,6 @@
 
     if !exists('g:override_vim_bundles')
         color molokai
-        let g:molokai_original = 1
-        let g:rehash256 = 1
     endif
 
     set tabpagemax=15               " Only show 15 tabs
@@ -673,13 +671,6 @@
         endif
     " }
 
-    " OmniComplete {
-        " To disable omni complete, add the following to your .vimrc.before.local file:
-        "   let g:vim_no_omni_complete = 1
-        if !exists('g:vim_no_omni_complete')
-        endif
-    " }
-
     " Ctags {
         set tags=./tags;/,~/.vimtags;,~/.vim/tags
 
@@ -716,6 +707,17 @@
             let NERDTreeShowHidden=1
             let NERDTreeKeepTreeInNewTab=1
             let g:nerdtree_tabs_open_on_gui_startup=0
+            let g:NERDTreeIndicatorMapCustom = {
+                        \ 'Modified'  : '✹',
+                        \ 'Staged'    : '✚',
+                        \ 'Untracked' : '✭',
+                        \ 'Renamed'   : '➜',
+                        \ 'Unmerged'  : '═',
+                        \ 'Deleted'   : '✖',
+                        \ 'Dirty'     : '✗',
+                        \ 'Clean'     : '✓',
+                        \ 'Unknown'   : '?'
+                        \ }
         endif
     " }
 
