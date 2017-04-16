@@ -199,9 +199,10 @@
     " To disable the stripping of whitespace, add the following to your
     " .vimrc.before.local file:
     "   let g:vim_keep_trailing_whitespace = 1
-    autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql autocmd BufWritePre <buffer> if !exists('g:vim_keep_trailing_whitespace') | call StripTrailingWhitespace() | endif
+    autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql autocmd BufEnter <buffer> StripWhitespace
     autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
     autocmd FileType haskell,puppet,ruby,yml setlocal expandtab shiftwidth=2 softtabstop=2
+    autocmd FileType go autocmd BufEnter <buffer> IndentGuidesDisable
     " preceding line best in a plugin but here for now.
 
     autocmd BufNewFile,BufRead *.coffee set filetype=coffee
@@ -718,6 +719,48 @@
                         \ 'Clean'     : '✓',
                         \ 'Unknown'   : '?'
                         \ }
+
+            " nerdtree-syntax-highlight {
+                let s:brown = "905532"
+                let s:aqua =  "3AFFDB"
+                let s:blue = "689FB6"
+                let s:darkBlue = "44788E"
+                let s:purple = "834F79"
+                let s:lightPurple = "834F79"
+                let s:red = "AE403F"
+                let s:beige = "F5C06F"
+                let s:yellow = "F09F17"
+                let s:orange = "D4843E"
+                let s:darkOrange = "F16529"
+                let s:pink = "CB6F6F"
+                let s:salmon = "EE6E73"
+                let s:green = "8FAA54"
+                let s:lightGreen = "31B53E"
+                let s:white = "FFFFFF"
+                let s:rspec_red = 'FE405F'
+                let s:git_orange = 'F54D27'
+
+                let g:NERDTreeExtensionHighlightColor = {} " this line is needed to avoid error
+                let g:NERDTreeExtensionHighlightColor['css'] = s:blue " sets the color of css files to blue
+                let g:NERDTreeExtensionHighlightColor = {} " this line is needed to avoid error
+                let g:NERDTreeExtensionHighlightColor['python'] = s:green " sets the color of css files to blue
+                let g:NERDTreeExtensionHighlightColor = {} " this line is needed to avoid error
+                let g:NERDTreeExtensionHighlightColor['org'] = s:pink " sets the color of css files to blue
+
+                let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+                let g:NERDTreeExactMatchHighlightColor['tex'] = s:rspec_red " sets the color of css files to blue
+                let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+                let g:NERDTreeExactMatchHighlightColor['.gitignore'] = s:git_orange " sets the color for .gitignore files
+                let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+                let g:NERDTreeExactMatchHighlightColor['.ipynb'] = s:lightPurple " sets the color for .ipynb files
+                let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+                let g:NERDTreeExactMatchHighlightColor['.py'] = s:red " sets the color for .ipynb files
+
+                let g:NERDTreePatternMatchHighlightColor = {} " this line is needed to avoid error
+                let g:NERDTreePatternMatchHighlightColor['.*_spec\.rb$'] = s:rspec_red " sets the color for files ending with _spec.rb
+                let g:NERDTreePatternMatchHighlightColor = {} " this line is needed to avoid error
+                let g:NERDTreePatternMatchHighlightColor['*.py$'] = s:red " sets the color for files ending with _spec.rb
+           " }
         endif
     " }
 
@@ -921,7 +964,7 @@
     " }}}
 
     " EasyTags {
-       " Disabling for now. It doesn't work well on large tag files 
+       " Disabling for now. It doesn't work well on large tag files
         let g:loaded_easytags = 1  " Disable until it's working better
         let g:easytags_cmd = 'ctags'
         let g:easytags_dynamic_files = 1
@@ -1102,20 +1145,6 @@
                 NERDTreeFind
                 wincmd l
             endif
-        endfunction
-    " }
-
-    " Strip whitespace {
-        function! StripTrailingWhitespace()
-            " Preparation: save last search, and cursor position.
-            let _s=@/
-            let l = line(".")
-            let c = col(".")
-            " do the business:
-            %s/\s\+$//e
-            " clean up: restore previous search history, and cursor position
-            let @/=_s
-            call cursor(l, c)
         endfunction
     " }
 
