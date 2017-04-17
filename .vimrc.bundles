@@ -49,6 +49,7 @@ call plug#begin('~/.vim/bundle')
         Plug 'vim-airline/vim-airline'
         Plug 'vim-airline/vim-airline-themes'
         Plug 'powerline/fonts'
+        Plug 'ryanoasis/vim-devicons'
         Plug 'jistr/vim-nerdtree-tabs'
         Plug 'flazz/vim-colorschemes'
         Plug 'Shougo/vimshell.vim'
