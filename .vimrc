@@ -79,7 +79,7 @@
     set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
     set virtualedit=onemore             " Allow for cursor beyond last character
     set history=1000                    " Store a ton of history (default is 20)
-    set spell                         " Spell checking on
+    set nospell                         " Spell checking on
     set hidden                          " Allow buffer switching without saving
     set iskeyword-=.                    " '.' is an end of word designator
     set iskeyword-=#                    " '#' is an end of word designator
@@ -196,10 +196,8 @@
     set pastetoggle=<F5>           " pastetoggle (sane indentation on pastes)
     "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
     " Remove trailing whitespaces and ^M chars
-    " To disable the stripping of whitespace, add the following to your
-    " .vimrc.before.local file:
-    "   let g:vim_keep_trailing_whitespace = 1
-    autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql autocmd BufEnter <buffer> StripWhitespace
+    autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql autocmd BufEnter,BufWritePre <buffer> StripWhitespace
+    autocmd FileType c,cpp,java,php,javascript,python,xml,sql,perl autocmd BufEnter <buffer> :%ret!4<CR>
     autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
     autocmd FileType haskell,puppet,ruby,yml setlocal expandtab shiftwidth=2 softtabstop=2
     autocmd FileType go autocmd BufEnter <buffer> IndentGuidesDisable
