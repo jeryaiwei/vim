@@ -197,8 +197,7 @@
     "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
     " Remove trailing whitespaces and ^M chars
     autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql autocmd BufEnter,BufWritePre <buffer> StripWhitespace
-    autocmd FileType c,cpp,java,php,javascript,python,xml,sql,perl autocmd BufEnter <buffer> :%ret!4<CR>
-    autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
+    autocmd FileType c,cpp,java,php,javascript,python,xml,sql,perl autocmd BufEnter <buffer>
     autocmd FileType haskell,puppet,ruby,yml setlocal expandtab shiftwidth=2 softtabstop=2
     autocmd FileType go autocmd BufEnter <buffer> IndentGuidesDisable
     " preceding line best in a plugin but here for now.
