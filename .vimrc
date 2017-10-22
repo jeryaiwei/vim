@@ -670,7 +670,7 @@
     " }
 
     " Ctags {
-        set tags=./tags;/,~/.vimtags;,~/.vim/tags
+        set tags=./tags;/,~/.vimtags;",~/.vim/tags
 
         " Make tags placed in .git/tags file available in all levels of a repository
         let gitroot = substitute(system('git rev-parse --show-toplevel'), '[\n\r]', '', 'g')
