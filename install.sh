@@ -19,9 +19,9 @@ for i in $HOME/.vim $HOME/.vimrc $HOME/.gvimrc $HOME/.vimrc.bundles; do [ -L $i 
 
 
 echo "Step2: setting up symlinks"
-lnif $CURRENT_DIR/config/vimrc $HOME/.vimrc
-lnif $CURRENT_DIR/config/vimrc.bundles $HOME/.vimrc.bundles
-lnif "$CURRENT_DIR/" "$HOME/.vim"
+lnif $CURRENT_DIR/vimrc $HOME/.vimrc
+lnif $CURRENT_DIR/vimrc.bundles $HOME/.vimrc.bundles
+lnif "$CURRENT_DIR/" "$HOME/.vim/config"
 
 
 echo "Step3: update/install plugins using PlugInstall"
